@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRA Technology | Lulusan IT & Web Developer</title>
+
+    <!-- Google Fonts: Inter & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="{{ asset('favicon/favicon.png') }}" rel="icon" type="image/png">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Vite Assets -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        p, .font-inter { font-family: 'Inter', sans-serif; }
+
+        /* Glassmorphism Navbar Premium */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        /* Hover Navigation Link Desktop */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            color: #475569;
+        }
+        .nav-link:hover {
+            color: #1677FF;
+            background-color: #F0F6FF;
+        }
+        .nav-link.active {
+            color: #1677FF;
+            background-color: #E6F0FF;
+            font-weight: 600;
+            box-shadow: 0 4px 15px -3px rgba(22, 119, 255, 0.15);
+        }
+
+        /* ============ Social Media Icons - Hover Warna Sesuai Brand ============ */
+        .social-icon {
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.08);
+            color: #ffffff;
+        }
+
+        /* Brand Colors */
+        .social-linkedin:hover { background-color: #0A66C2; border-color: #0A66C2; box-shadow: 0 10px 20px -8px rgba(10, 102, 194, 0.6); }
+        .social-github:hover { background-color: #24292e; border-color: #24292e; box-shadow: 0 10px 20px -8px rgba(36, 41, 46, 0.6); }
+        .social-whatsapp:hover { background-color: #25D366; border-color: #25D366; box-shadow: 0 10px 20px -8px rgba(37, 211, 102, 0.6); }
+        .social-instagram:hover { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4); border-color: transparent; box-shadow: 0 10px 20px -8px rgba(221, 42, 123, 0.6); }
+    </style>
+</head>
+<body class="text-[#0B1B3A] bg-[#FAFCFF] antialiased overflow-x-hidden selection:bg-[#1677FF] selection:text-white">
+
+    <!-- ================= NAVBAR PREMIUM ================= -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-nav shadow-[0_4px_30px_rgba(0,0,0,0.02)] h-[90px] flex items-center">
+        <div class="max-w-[1180px] w-full mx-auto px-6 flex justify-between items-center">
+
+            <!-- Logo Brand -->
+            <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center transition-transform hover:scale-105 duration-300">
+                <img src="{{ asset('images/logo.png') }}" alt="PRA Technology Logo" class="h-14 md:h-16 lg:h-[72px] w-auto object-contain">
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }} px-4 lg:px-5 py-2.5 text-[14.5px] font-medium rounded-full">Beranda</a>
+                <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }} px-4 lg:px-5 py-2.5 text-[14.5px] font-medium rounded-full">Profil Saya</a>
+                <a href="{{ route('services') }}" class="nav-link {{ request()->routeIs('services') ? 'active' : '' }} px-4 lg:px-5 py-2.5 text-[14.5px] font-medium rounded-full">Layanan</a>
+                <a href="{{ route('projects') }}" class="nav-link {{ request()->routeIs('projects') ? 'active' : '' }} px-4 lg:px-5 py-2.5 text-[14.5px] font-medium rounded-full">Portofolio</a>
+                <a href="{{ route('dokumentasi') }}" class="nav-link {{ request()->routeIs('dokumentasi') ? 'active' : '' }} px-4 lg:px-5 py-2.5 text-[14.5px] font-medium rounded-full">Dokumentasi</a>
+                <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }} px-4 lg:px-5 py-2.5 text-[14.5px] font-medium rounded-full">Hubungi</a>
+            </nav>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <div class="flex md:hidden items-center">
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="text-[#0B1B3A] p-2 focus:outline-none hover:bg-[#F0F6FF] rounded-xl transition-colors">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8 transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8 hidden transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown Panel -->
+        <div id="mobile-menu" class="absolute top-[90px] left-4 right-4 bg-white rounded-2xl border border-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] py-4 px-4 hidden flex-col gap-2 md:hidden transform origin-top transition-all duration-300 opacity-0 -translate-y-4">
+            <a href="{{ route('home') }}" class="mobile-link {{ request()->routeIs('home') ? 'bg-[#F4F9FF] text-[#1677FF] font-semibold' : 'text-[#0B1B3A] font-medium hover:bg-[#F4F9FF] hover:text-[#1677FF]' }} px-5 py-3.5 text-[16px] rounded-xl transition-colors">Beranda</a>
+            <a href="{{ route('about') }}" class="mobile-link {{ request()->routeIs('about') ? 'bg-[#F4F9FF] text-[#1677FF] font-semibold' : 'text-[#0B1B3A] font-medium hover:bg-[#F4F9FF] hover:text-[#1677FF]' }} px-5 py-3.5 text-[16px] rounded-xl transition-colors">Profil Saya</a>
+            <a href="{{ route('services') }}" class="mobile-link {{ request()->routeIs('services') ? 'bg-[#F4F9FF] text-[#1677FF] font-semibold' : 'text-[#0B1B3A] font-medium hover:bg-[#F4F9FF] hover:text-[#1677FF]' }} px-5 py-3.5 text-[16px] rounded-xl transition-colors">Layanan</a>
+            <a href="{{ route('projects') }}" class="mobile-link {{ request()->routeIs('projects') ? 'bg-[#F4F9FF] text-[#1677FF] font-semibold' : 'text-[#0B1B3A] font-medium hover:bg-[#F4F9FF] hover:text-[#1677FF]' }} px-5 py-3.5 text-[16px] rounded-xl transition-colors">Portofolio</a>
+            <a href="{{ route('dokumentasi') }}" class="mobile-link {{ request()->routeIs('dokumentasi') ? 'bg-[#F4F9FF] text-[#1677FF] font-semibold' : 'text-[#0B1B3A] font-medium hover:bg-[#F4F9FF] hover:text-[#1677FF]' }} px-5 py-3.5 text-[16px] rounded-xl transition-colors">Dokumentasi</a>
+            <a href="{{ route('contact') }}" class="mobile-link {{ request()->routeIs('contact') ? 'bg-[#F4F9FF] text-[#1677FF] font-semibold' : 'text-[#0B1B3A] font-medium hover:bg-[#F4F9FF] hover:text-[#1677FF]' }} px-5 py-3.5 text-[16px] rounded-xl transition-colors">Hubungi</a>
+        </div>
+    </header>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="pt-[90px]">
+        @yield('content')
+    </main>
+
+    <!-- ================= FOOTER PREMIUM ================= -->
+<footer class="bg-[#030917] text-white pt-12 sm:pt-16 lg:pt-20 pb-6 sm:pb-8 relative overflow-hidden">
+    <!-- Abstract Glowing Ornaments -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#1677FF]/15 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-[#7048FF]/15 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+    <div class="max-w-[1180px] mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 pb-8 sm:pb-10 lg:pb-14 border-b border-white/10">
+
+            <!-- Kolom 1: Brand & Deskripsi -->
+            <div class="md:col-span-5 flex flex-col gap-3 sm:gap-5">
+                <a href="{{ route('home') }}" class="inline-block">
+                    <img src="{{ asset('images/logo.png') }}" alt="PRA Technology" class="h-11 sm:h-14 lg:h-20 brightness-0 invert object-contain opacity-95 hover:opacity-100 transition-opacity">
+                </a>
+                <p class="font-inter text-[#94A3B8] text-[13px] sm:text-[14.5px] leading-[1.6] sm:leading-[1.8] max-w-[400px]">
+                    Solusi pengembangan web profesional, sistem backend yang andal, integrasi API terstruktur, dan perancangan basis data teroptimasi untuk akselerasi ekosistem digital Anda.
+                </p>
+            </div>
+
+            <!-- Kolom 2: Navigasi Menu -->
+            <div class="md:col-span-3 flex flex-col gap-2 sm:gap-3.5">
+                <h4 class="text-white font-bold text-[12.5px] sm:text-[14px] tracking-wider mb-1 sm:mb-2 uppercase relative inline-block after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-6 sm:after:w-8 after:h-[2px] after:bg-[#1677FF]">Navigasi Utama</h4>
+                <a href="{{ route('home') }}" class="text-[#94A3B8] hover:text-white hover:translate-x-1 transition-all duration-300 w-fit text-[13px] sm:text-[14.5px] mt-1 sm:mt-2">Beranda</a>
+                <a href="{{ route('about') }}" class="text-[#94A3B8] hover:text-white hover:translate-x-1 transition-all duration-300 w-fit text-[13px] sm:text-[14.5px]">Profil Saya</a>
+                <a href="{{ route('services') }}" class="text-[#94A3B8] hover:text-white hover:translate-x-1 transition-all duration-300 w-fit text-[13px] sm:text-[14.5px]">Layanan IT</a>
+                <a href="{{ route('projects') }}" class="text-[#94A3B8] hover:text-white hover:translate-x-1 transition-all duration-300 w-fit text-[13px] sm:text-[14.5px]">Portofolio</a>
+                <a href="{{ route('dokumentasi') }}" class="text-[#94A3B8] hover:text-white hover:translate-x-1 transition-all duration-300 w-fit text-[13px] sm:text-[14.5px]">Dokumentasi</a>
+            </div>
+
+            <!-- Kolom 3: Kontak & Social Media Interaktif -->
+            <div class="md:col-span-4 flex flex-col gap-2.5 sm:gap-4">
+                <h4 class="text-white font-bold text-[12.5px] sm:text-[14px] tracking-wider mb-1 sm:mb-2 uppercase relative inline-block after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-6 sm:after:w-8 after:h-[2px] after:bg-[#1677FF]">Terhubung</h4>
+                <p class="font-inter text-[#94A3B8] text-[12.5px] sm:text-[14px] mt-1 sm:mt-2 mb-0.5 sm:mb-1">Terbuka untuk kolaborasi, magang, maupun pengembangan proyek profesional.</p>
+
+                <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mt-0.5 sm:mt-1">
+                    <a href="https://linkedin.com/in/suprapto" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon social-linkedin w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#94A3B8]">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="https://github.com/Suprapto-23" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon social-github w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#94A3B8]">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://wa.me/6281229952175" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon social-whatsapp w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#94A3B8]">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.39 0 0 5.39 0 12.031c0 2.124.553 4.195 1.604 6.012L.35 24l6.096-1.601A11.966 11.966 0 0012.031 24c6.64 0 12.03-5.39 12.03-12.03S18.671 0 12.031 0zm0 22.009a9.92 9.92 0 01-5.074-1.39l-.364-.216-3.774.99 1-3.68-.237-.377a9.96 9.96 0 01-1.522-5.305c0-5.497 4.475-9.972 9.971-9.972 5.498 0 9.972 4.475 9.972 9.972s-4.474 9.972-9.972 9.972zm5.472-7.48c-.3-.15-1.774-.876-2.049-.977-.275-.1-.475-.15-.675.15-.2.3-.775.976-.95 1.176-.175.2-.35.226-.65.076a8.212 8.212 0 01-2.42-1.496 9.102 9.102 0 01-1.677-2.076c-.175-.3-.018-.464.132-.614.135-.135.3-.3.45-.45.15-.15.2-.263.3-.438.1-.176.05-.338-.025-.488-.075-.15-.675-1.626-.925-2.226-.244-.588-.492-.508-.675-.518-.175-.01-.375-.01-.575-.01-.2 0-.525.075-.8.375-.275.3-1.05 1.026-1.05 2.502 0 1.476 1.075 2.902 1.225 3.102.15.2 2.115 3.228 5.12 4.528.715.31 1.272.494 1.708.632.716.227 1.368.195 1.884.118.577-.086 1.774-.726 2.024-1.426.25-.7.25-1.302.175-1.426-.075-.126-.275-.202-.575-.352z"/></svg>
+                    </a>
+                    <a href="https://instagram.com/kulo_prapto" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon social-instagram w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#94A3B8]">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pt-4 sm:pt-6 lg:pt-8 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-2 sm:gap-4 text-center">
+            <p class="font-inter text-[#64748B] text-[11.5px] sm:text-[13.5px]">&copy; {{ date('Y') }} <span class="text-white font-medium">PRA TECHNOLOGY</span>. All rights reserved.</p>
+            <p class="font-inter text-[#64748B] text-[11.5px] sm:text-[13.5px] flex items-center gap-1.5">
+                Designed &amp; Built with PRA TECHNOLOGY TIM
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: false
+            });
+
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const iconMenu = document.getElementById('menu-icon');
+            const iconClose = document.getElementById('close-icon');
+
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.contains('hidden');
+
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    setTimeout(() => {
+                        menu.classList.remove('opacity-0', '-translate-y-4');
+                        menu.classList.add('opacity-100', 'translate-y-0');
+                    }, 10);
+
+                    iconMenu.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                } else {
+                    menu.classList.remove('opacity-100', 'translate-y-0');
+                    menu.classList.add('opacity-0', '-translate-y-4');
+                    setTimeout(() => {
+                        menu.classList.add('hidden');
+                        menu.classList.remove('flex');
+                    }, 300);
+
+                    iconClose.classList.add('hidden');
+                    iconMenu.classList.remove('hidden');
+                }
+            });
+
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.remove('opacity-100', 'translate-y-0');
+                    menu.classList.add('opacity-0', '-translate-y-4');
+                    setTimeout(() => {
+                        menu.classList.add('hidden');
+                        menu.classList.remove('flex');
+                    }, 300);
+                    iconClose.classList.add('hidden');
+                    iconMenu.classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
